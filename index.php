@@ -2,13 +2,12 @@
 
     include('Database.php');
     include('Rest.php');
-
     if ($_GET['lote']=='0') {
-        
-         echo(json_encode(Rest::getLotes()));
+        header('Content-Type: application/json');
+        echo(json_encode(Rest::getLotes()));
     }else{
-       
-        echo(json_encode(Rest::retriveLotes($_GET['lote'])));
+        header('Content-Type: application/json');
+        Rest::retriveLotes($_GET['lote']);
     }
 
  ?>

@@ -3,5 +3,5 @@
     RewriteEngine On 
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-s
-    Rewriterule ^lotes$ index.php?lote=0 [L,QSA]
-    Rewriterule ^lotes/(.*)$ index.php?lote=$1 [L,QSA]
+    Rewriterule ^api/lotes$ index.php?lote=0 [L,QSA]
+    Rewriterule ^api/lotes/(.*)$ index.php?lote=$1 [L,QSA]
