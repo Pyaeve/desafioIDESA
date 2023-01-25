@@ -1,19 +1,22 @@
 <?php 
-require_once 'Database.php';
+include('Database.php');
 
 class DesafioDos {
 
-    public static function retriveLotes(int $loteID):void {
+    public static function retriveLotes(string $loteID):void {
 
         Database::setDB(); 
-
-        echo(json_encode(self::getLotes($loteID)));
+        $lotes = self::getLotes($loteID);
+      //  echo "<pre>";
+       // print_r($lotes);
+       // die("</pre>");
+        echo(json_encode($lotes));
     }
 
-    private static function getLotes (int $loteID){
-        $lotes = [];
+    private static function getLotes (string $loteID){
+        $lotes=[];
         $cnx = Database::getConnection();
-        $stmt = $cnx->query("SELECT * FROM debts WHERE lote = '$loteID' LIMIT 2");
+        $stmt = $cnx->query("SELECT * FROM debts AS t1 where t1.lote='".$loteID."';");
         while($rows = $stmt->fetchArray(SQLITE3_ASSOC)){
             $lotes[] = (object) $rows;
         }
