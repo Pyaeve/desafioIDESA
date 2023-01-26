@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Lotes;
-class LotesController extends Controller
+use App\Cuotas;
+use DB;
+class CuotasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class LotesController extends Controller
      */
     public function index()
     {
-        //
+        $cuotas = Cuotas::all();
+        return $cuotas;
     }
 
     /**
@@ -46,6 +48,7 @@ class LotesController extends Controller
     public function show($id)
     {
         //
+        return Cuotas::find($id);
     }
 
     /**

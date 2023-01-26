@@ -7,9 +7,7 @@ class DesafioDos {
 
         Database::setDB(); 
         $lotes = self::getLotes($loteID);
-      //  echo "<pre>";
-       // print_r($lotes);
-       // die("</pre>");
+        header('Content-Type: application/json');
         echo(json_encode($lotes));
     }
 

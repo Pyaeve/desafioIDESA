@@ -11,17 +11,18 @@ class DesafioUno {
 
         $lotes =self::getLotes();
        
-        $cobrar['status']            = true;
+        $cobrar['status']            = false
+
+
+        ;
         $cobrar['message']           = 'No hay Lotes para cobrar';
         $cobrar['data']['total']     = 0;
         $cobrar['data']['detail']    = [];
 
-       // print_r($lotes);
-         //die(json_encode($lotes));
-        foreach($lotes as $n){
+          foreach($lotes as $n){
             
-           // if($n->vencimiento &&  strtotime($n->vencimiento) > strtotime(date('Y-m-d'))) continue;
-           if($n->precio!==190000) continue;
+          
+          if($n->precio!==190000) continue;
             if($n->clientID !== $clientID) continue;
                 if($n->lote && $n->lote!=='00148') continue;
             $cobrar['status']             = true;
@@ -30,7 +31,7 @@ class DesafioUno {
             $cobrar['data']['detail'][]   = (array) $n;
  
         }
-
+        header('Content-Type: application/json');
         echo(json_encode($cobrar));
     }
 
@@ -42,7 +43,6 @@ class DesafioUno {
         $cnx = Database::getConnection();
         $stmt = $cnx->query("SELECT * FROM debts");
         while($rows = $stmt->fetchArray(SQLITE3_ASSOC)){
-            //$rows['clientID'] = (string) $rows['clientID'];
             $lotes[] = (object) $rows;
         }
         return $lotes;

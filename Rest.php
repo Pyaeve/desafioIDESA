@@ -11,7 +11,7 @@
         echo(json_encode($lotes));
     }
 
-    public static function getLote (string $loteID){
+    public static function getLote (string $loteID): array{
         $lotes=[];
         $cnx = Database::getConnection();
         $stmt = $cnx->query("SELECT * FROM debts AS t1 where t1.lote='".$loteID."';");
