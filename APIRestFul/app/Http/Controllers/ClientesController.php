@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 use Validator;
 use App\Clientes;
 
@@ -19,10 +21,12 @@ class ClientesController extends Controller
         $clientes = Clientes::all();
         $msg['status'] = 'ok';
         $msg['message']= 'Lista de Clientes, '.count($clientes). ' encontrados en total';
-        $msg['data']['total']     = 1;
+        $msg['data']['total']     = count($clientes);
         $msg['data']['detail']    = $clientes;
-
-        return $msg;
+        $res = response()->json($msg,200,['DEV-BY'=>
+            'Richard Arce
+            ']);
+        return $res;
 
     }
 
@@ -48,30 +52,40 @@ class ClientesController extends Controller
         if ($validator->fails()) {
             //obtenos los errores
             $errors = $validator->errors();
-            //respodemos con una Ex
-            $res = response()->json([
-                'status' => 'error',
-                'message' => $errors->messages(),
-                ], 200);
+            
+             $msg['status'] = 'error';
+                $msg['message']           = 'Error debe enviar todos los campos requeridos para crear un Cliente nuevo';
+                $msg['data']['total']     = count($errors->messages());
+                $msg['data']['detail']    = $errors->messages();
+            $res = response()->json(
+                $msg,200,['x-dev-by'=>
+            'Richard Arce
+            ']);
+
             throw new HttpResponseException($res);
             
         }else{
             //ahora intentamos crear el Cliente
-            $cliente = Cliente::create($request->all());
+            $cliente = Clientes::create($request->all());
             //validamos de nuevo que lo hemos creado con exito
             if(is_object($cliente) && $cliente->count()>0){
-                $res['status'] = 'ok';
-                $res['message']           = 'Cliente nuevo creado con Exito!!';
-                $res['data']['total']     = $cliente->count();
-                $res['data']['detail']    = $cliente;
+                $msg['status'] = 'ok';
+                $msg['message']           = 'Cliente nuevo creado con Exito!!';
+                $msg['data']['total']     = 1;
+                $msg['data']['detail']    = $cliente;
+                $res = response()->json($msg, 200,['x-dev-by'=>
+            'Richard Arce
+            ']);
                 return $res;
             }else{
                 //preparamos la respusta
                //respodemos con una Ex
             $res = response()->json([
                 'status' => 'error',
-                'message' => 'Ocurrio algun error inexperado al trat de crear un nuevo Cliente',
-                ], 200);
+                'message' => 'Ocurrio al gun error inexperado',
+                ], 200, ['DEV-BY'=>
+            'Richard Arce
+            ']);
             throw new HttpResponseException($res);
             }
 
@@ -90,21 +104,29 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        $msg = [];
-        $cliente = Clientes::findOrFail($id);
-        
-        if(is_object($cliente) && $cliente->count()>0){
-
+        try {
+            
+            $cliente = Clientes::findOrFail($id); 
             $msg['status'] = 'ok';
             $msg['message']   = 'Detalle del Cliente ';
-             $msg['data']['total']     = $cliente->count();
-             $msg['data']['detail']    = $cliente;
-
-        }else{
+            $msg['data']['total']     = 1;
+            $msg['data']['detail']    = $cliente;
+            $res = response()->json($msg, 200,['x-dev-by'=>
+            'Richard Arce
+            ']  );
+            return $res;
+        } catch (ModelNotFoundException $e) {
             $msg['status'] = 'error';
             $msg['message']      = 'no hay registros de algun Cliente con ese ID en nuestra Base de Datos';
+            $res = response()->json($msg, 200,['x-dev-by'=>
+            'Richard Arce
+            ']  );
+            return $res;
         }
-        return $msg;
+        
+       
+     
+        
     }
 
     /**
@@ -116,7 +138,48 @@ class ClientesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        try {
+              //validamos primero el Request
+            $validator = Validator::make($request->all(), [
+                'id'=>'required',
+                'nombres' => 'required|max:255',
+                
+            
+             ]);
+             //si no valida
+           if ($validator->fails()) {
+                //obtenos los errores
+                $errors = $validator->errors();
+                $msg['status'] = 'error';
+                $msg['message']           = 'Error debe enviar todos los campos requeridos para crear un Cliente nuevo';
+                $msg['data']['total']     = count($errors->messages());
+                $msg['data']['detail']    = $errors->messages();
+                $res = response()->json($msg,200,['x-dev-by'=>'Richard Arce']);
+
+                throw new HttpResponseException($res);
+            
+            } 
+            $cliente = Clientes::findOrFail($id)->update($request->all()); 
+            $msg['status'] = 'ok';
+            $msg['message']   = 'Cliente actualizado en con exito ';
+            $msg['data']['total']=1;
+            $msg['data']['detail']=$cliente;
+            $res = response()->json($msg, 200,['x-dev-by'=>
+            'Richard Arce
+            ']  );
+            return $res;
+            //sino capturamos el error
+        } 
+         catch (ModelNotFoundException $e) {
+            $msg['status'] = 'error';
+            $msg['message']      = 'no hay registros de algun Cliente con ese ID en nuestra Base de Datos';
+            $res = response()->json($msg, 200,['x-dev-by'=>
+            'Richard Arce
+            ']  );
+            return $res;
+        }
+
     }
 
     /**
@@ -126,9 +189,25 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $Cliente = Clientes::findOrFail($id)->delete();
+    {   //tratamos de borrar con softdeleting
+        try {
 
-
+            $cliente = Clientes::findOrFail($id)->delete(); 
+            $msg['status'] = 'ok';
+            $msg['message']   = 'Cliente borrado en con exito ';
+            $res = response()->json($msg, 200,['x-dev-by'=>
+            'Richard Arce
+            ']  );
+            return $res;
+            //sino capturamos el error
+        } catch (ModelNotFoundException $e) {
+            $msg['status'] = 'error';
+            $msg['message']      = 'no hay registros de algun Cliente con ese ID en nuestra Base de Datos';
+            $res = response()->json($msg, 200,['x-dev-by'=>
+            'Richard Arce
+            ']  );
+            return $res;
+        }
+        
     }
 }
