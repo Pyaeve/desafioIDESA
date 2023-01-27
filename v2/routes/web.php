@@ -15,10 +15,21 @@ use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     \DB::table('users')->insert([
-  'name' => 'IDESA',
-  'email' => 'desafio@idesa.com.py',
+  'name' => 'Desafio Idesa',
+  'email' => 'rifarca@gmail.com',
 'password' => Hash::make('12345678' )
 ]);
+     \DB::table('users')->insert([
+  'name' => 'Valentin Idesa',
+  'email' => 'valentin.zaracho@idesa.com.py',
+'password' => Hash::make('12345678' )
+]);
+      \DB::table('users')->insert([
+  'name' => 'Martin Martinez',
+  'email' => 'martin.martinez@idesa.com.py',
+'password' => Hash::make('12345678' )
+]);
+      
 });
 
 

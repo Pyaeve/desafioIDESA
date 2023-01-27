@@ -32,7 +32,7 @@ class AuthController extends Controller
                     
                 );
             }
-            $tokenResult = $user->createToken('authToken')->plainTextToken;
+            $tokenResult = $user->createToken($user->email)->plainTextToken;
             return response()->json([
                 'status' => 'ok',
                 'message'=>'Auteticacion de Usuario validado con Exito',

@@ -18,7 +18,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::all();
+        $clientes = Clientes::paginate(10);
         $msg['status'] = 'ok';
         $msg['message']= 'Lista de Clientes, '.count($clientes). ' encontrados en total';
         $msg['data']['total']     = count($clientes);
@@ -155,7 +155,7 @@ class ClientesController extends Controller
                 $msg['message']           = 'Error debe enviar todos los campos requeridos para crear un Cliente nuevo';
                 $msg['data']['total']     = count($errors->messages());
                 $msg['data']['detail']    = $errors->messages();
-                $res = response()->json($msg,200,['x-dev-by'=>'Richard Arce']);
+                $res = response()->json($msg,501,['x-dev-by'=>'Richard Arce']);
 
                 throw new HttpResponseException($res);
             
@@ -188,7 +188,7 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cliente)
     {   //tratamos de borrar con softdeleting
         try {
 
