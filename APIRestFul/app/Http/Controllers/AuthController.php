@@ -19,7 +19,7 @@ class AuthController extends Controller
                  return response()->json([
                     'status' => 'Unauthorized',
                     'message' => 'No tiene autorizacion para consumir la API'], 
-                    200,
+                   401,['x-dev-by'=>'Richard Arce']
                     
                 );
             }
@@ -27,7 +27,7 @@ class AuthController extends Controller
             if ( ! Hash::check($request->password, $user->password, [])) {
                 return response()->json([
                     'status' => 'Unauthorized',
-                    'message' => 'No tiene autorizacion para consumir la API'], 
+                    'message' => 'No tiene autorizacion para consumir la API'], 401,['x-dev-by'=>'Richard Arce']
                     
                     
                 );
@@ -35,12 +35,17 @@ class AuthController extends Controller
             $tokenResult = $user->createToken('authToken')->plainTextToken;
             return response()->json([
                 'status' => 'ok',
-                'message'=>'Auteticion de Usuario validado con Exito',
+                'message'=>'Auteticacion de Usuario validado con Exito',
                 'data'=>[
                     'total'=>1,    
                     'detail'=> [
+                        'id'=>$user->id,
+                        'nombres'=>$user->name,
+                        'correo'=>$user->email,
                         'access_token' => $tokenResult,
-                        'token_type' => 'Bearer',
+                        'type_token' => 'Bearer',
+                        'value_token'=>'Bearer '.$tokenResult,
+                        'expiration_token'=>env('API_EXPIRE_ACCESS_TOKEN',5)
                        ]
                 ]
             ],200,['x-dev-by'=>'Richard Arce']);
@@ -55,7 +60,7 @@ class AuthController extends Controller
                         
                     ]
                 ]
-            ],401,['x-dev-by'=>'Richard Arce']);
+            ],401,['x-dev-by'=>'Richard Arce','server','anda a saber']);
         }
     }
 }

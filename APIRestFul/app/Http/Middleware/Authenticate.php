@@ -20,9 +20,10 @@ class Authenticate extends Middleware
             return route('login');
         }*/
          if (!Auth::check()) {
-              $msg['status'] = 'error';
-            $msg['message']      = 'No estas Autorizado para usar laPI ';
-            $res = response()->json($msg,401 );
+                
+              $msg['status'] = 'unauthorized';
+            $msg['message']      = 'No tienes Autorizacion para usar la API';
+            $res = response()->json($msg,401,['x-dev-by'=>'Richard Arce','server'=>'anda a saber'] );
             //dd($request);
             throw new HttpResponseException($res);
         }
