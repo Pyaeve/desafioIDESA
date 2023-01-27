@@ -1,9 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-úse App\User;
+use Laravel\Sanctum\NewAccessToken;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Hash;
+
 class AuthController extends Controller
 {
     
@@ -15,16 +18,21 @@ class AuthController extends Controller
             if (!Auth::attempt($credentials)) {
                  return response()->json([
                     'status' => 'Unauthorized',
-                    'message' => 'No tiene autorizacion para consumir la API'] 
+                    'message' => 'No tiene autorizacion para consumir la API'], 
                     200,
-                    ['x=dev-ky'=>'Richard Arce']
+                    
                 );
             }
             $user = User::where('email', $request->email)->first();
             if ( ! Hash::check($request->password, $user->password, [])) {
-                throw new \Exception(‘Error in Login’);
+                return response()->json([
+                    'status' => 'Unauthorized',
+                    'message' => 'No tiene autorizacion para consumir la API'], 
+                    
+                    
+                );
             }
-            $tokenResult = $user->createToken(‘authToken’)->plainTextToken;
+            $tokenResult = $user->createToken('authToken')->plainTextToken;
             return response()->json([
                 'status' => 'ok',
                 'message'=>'Auteticion de Usuario validado con Exito',
@@ -33,7 +41,7 @@ class AuthController extends Controller
                     'detail'=> [
                         'access_token' => $tokenResult,
                         'token_type' => 'Bearer',
-                    ]
+                       ]
                 ]
             ],200,['x-dev-by'=>'Richard Arce']);
         }catch (Exception $error) {
@@ -47,7 +55,7 @@ class AuthController extends Controller
                         
                     ]
                 ]
-            ],200,['x-dev-by'=>'Richard Arce']);
+            ],401,['x-dev-by'=>'Richard Arce']);
         }
     }
 }

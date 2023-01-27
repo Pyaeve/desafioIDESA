@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class Authenticate extends Middleware
 {
@@ -14,8 +16,17 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+        /*if (! $request->expectsJson()) {
             return route('login');
+        }*/
+         if (!Auth::check()) {
+              $msg['status'] = 'error';
+            $msg['message']      = 'No estas Autorizado para usar laPI ';
+            $res = response()->json($msg,401 );
+            //dd($request);
+            throw new HttpResponseException($res);
         }
+
+        return $next($request);
     }
 }

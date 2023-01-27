@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    \DB::table('users')->insert([
+  'name' => 'IDESA',
+  'email' => 'desafio@idesa.com.py',
+'password' => Hash::make('12345678' )
+]);
 });
 
 
