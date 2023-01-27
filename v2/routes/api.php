@@ -12,22 +12,27 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-}); */
-//Route::post('/login', 'AuthController@login');
+*/
 
 Route::post('/login', 'AuthController@login');
+//agrupamos las rutas bajo auth 
 Route::middleware('auth:sanctum')->group(function () {
-Route::apiResource('clientes','ClientesController');
-Route::apiResource('clientes.cuotas','ClientesCuotasController')->only([
-    'index', 'show'
-]);//->shallow();
-Route::apiResource('cuotas','CuotasController')->except([
-    'index', 'show'
-]);
+    Route::apiResource('clientes','ClientesController')
+        parameters([
+         'clientes' => 'id'
+        ]);
+    Route::apiResource('clientes.cuotas','ClientesCuotasController')
+        ->only(['index', 'show'])
+        parameters([
+         'clientes' => 'id'
+        ]);;//->shallow();
+    Route::apiResource('cuotas','CuotasController')
+        ->except([
+        'index', 'show'
+        ])
+        ->parameters([
+         'cuotas' => 'id'
+        ]);;
 });
 
 
