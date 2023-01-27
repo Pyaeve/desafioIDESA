@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', 'AuthController@login');
+//ruta para autenticar
+Route::post('auth', 'AuthController@login');
 //agrupamos las rutas bajo auth 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('clientes','ClientesController')
