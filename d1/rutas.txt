@@ -1,0 +1,21 @@
+
+   ParseError 
+
+  syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ')'
+
+  at C:\Docker\Images\webserver\public_html\desafioIDESA\APIRestFul\app\Http\Controllers\AuthController.php:58
+    54|                         'exception' => $error
+    55|                         
+    56|                     ]
+    57|                 ]
+  > 58|             ],401,'x-dev-by'=>'Richard Arce']);
+    59|         }
+    60|     }
+    61| }
+    62|
+
+  1   C:\Docker\Images\webserver\public_html\desafioIDESA\APIRestFul\vendor\composer\ClassLoader.php:432
+      Composer\Autoload\ClassLoader::Composer\Autoload\{closure}("C:\Docker\Images\webserver\public_html\desafioIDESA\APIRestFul\vendor\composer/../../app\Http\Controllers\AuthController.php")
+
+  2   [internal]:0
+      Composer\Autoload\ClassLoader::loadClass("App\Http\Controllers\AuthController")

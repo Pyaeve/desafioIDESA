@@ -1,0 +1,445 @@
+{
+	"id": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+	"name": "desarioIDESA",
+	"description": "",
+	"order": [
+		"a4f3b7a9-8a4b-58bf-29cc-58ff6bf98bc4",
+		"30d8d43e-eddc-3aac-9955-5d1ed8e995c4",
+		"166ddba8-262e-eecd-0b11-824c416daca0",
+		"c001af94-d96e-7e5f-ea01-de50257bed57",
+		"29d48b40-fab4-850b-08b6-bf1db6ac4980",
+		"fb2fbe30-3736-e582-3c04-f716c92218a5",
+		"671ed9bd-9ca4-74d5-1c65-d94807255f71",
+		"7a829a2f-add7-a7ae-8746-2f6dcd62a5ec",
+		"27e0e50b-e70a-a1b7-564d-5592e9f544ac",
+		"a7ea3f16-554f-5c71-ce76-7c614be79a6d"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1674800744503,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "166ddba8-262e-eecd-0b11-824c416daca0",
+			"headers": "Authorization: Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/desafioIDESA/APIRestFul/public/api/clientes",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "nombres",
+					"value": "Luis",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "apellidos",
+					"value": "Cardenas",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "correo",
+					"value": "luis.cardenas@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "domicilio",
+					"value": "en algun lugar del meta verso",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674803437857,
+			"name": "Crear Cliente Nuevo",
+			"description": "se le debe pasar cuatros parametros o campos obligarotios, estos son:\nnombres, apellidos, correo y domicilio",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "27e0e50b-e70a-a1b7-564d-5592e9f544ac",
+			"headers": "Authorization: Bearer 1|0owuOKJL27uHipRbo97tdsFcwdhRmcxXfyFO9E3B\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 1|0owuOKJL27uHipRbo97tdsFcwdhRmcxXfyFO9E3B",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/clientes/123456",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674933119930,
+			"name": "Ver Detalle Cliente(online)",
+			"description": "",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "29d48b40-fab4-850b-08b6-bf1db6ac4980",
+			"headers": "Authorization: Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6\n//Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://localhost/desafioIDESA/APIRestFul/public/api/clientes/123456",
+			"queryParams": [
+				{
+					"key": "nombres",
+					"value": "Carlos",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "apellidos",
+					"value": "Gonzalez",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "correo",
+					"value": "carlos.gonzalez@gmail.com",
+					"equals": true,
+					"description": "",
+					"enabled": false
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "nombres",
+					"value": "Felix",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "id",
+					"value": "123456",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "apellidos",
+					"value": "Estigarribia",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "correo",
+					"value": "felix.estigarribia@gmail,com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674815052057,
+			"name": "Actualizar Cliente",
+			"description": "\\",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "30d8d43e-eddc-3aac-9955-5d1ed8e995c4",
+			"headers": "Authorization: Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/desafioIDESA/APIRestFul/public/api/clientes/123463",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674802608568,
+			"name": "Ver Detalle de un Cliente",
+			"description": "se le pasa el parametro id",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "671ed9bd-9ca4-74d5-1c65-d94807255f71",
+			"headers": "Authorization: Bearer 1|0owuOKJL27uHipRbo97tdsFcwdhRmcxXfyFO9E3B\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 1|0owuOKJL27uHipRbo97tdsFcwdhRmcxXfyFO9E3B",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/clientes",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674844510895,
+			"name": "Listar Todos los Clientes(online)",
+			"description": "",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "7a829a2f-add7-a7ae-8746-2f6dcd62a5ec",
+			"headers": "",
+			"headerData": [],
+			"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "martin.martinez@idesa.com.py",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345678",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674844300053,
+			"name": "Solicitar Autorizacion(OnLine)",
+			"description": "",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "a4f3b7a9-8a4b-58bf-29cc-58ff6bf98bc4",
+			"headers": "Authorization: Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/desafioIDESA/APIRestFul/public/api/clientes",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "\n\nvar resBody= JSON.parse(responseBody);\nvar resCode = responseCode;\n/*TestType \n    1 testea si funciona bien las respuesta de Autenticaion valida,\n    2 testa si funcion biena las respuesta de Autenticacion fallida */\nvar testType = 1; \n\nif(testType==1)\n{\n    tests[\"Peticion aceptado por el servidor\"] = resCode.code === 200;\n    tests[\"Respuesta: ok \"] = resBody.status === \"ok\";\n   \n}else if(testType==2){\n     tests[\"Peticion rechazada por el servidor\"] = resCode.code === 401;\n    tests[\"Respuesta: unauthorized \"] = resBody.status === \"unauthorized\";\n}\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674840601861,
+			"name": "Listar Todos Los Cliente",
+			"description": "",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "a7ea3f16-554f-5c71-ce76-7c614be79a6d",
+			"headers": "Authorization: Bearer 1|0owuOKJL27uHipRbo97tdsFcwdhRmcxXfyFO9E3B\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer 1|0owuOKJL27uHipRbo97tdsFcwdhRmcxXfyFO9E3B",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://desafio.idesa.pyaeveapps.com/v2/public/api/clientes",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "nombres",
+					"value": "Marcelo",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "apellidos",
+					"value": "Marin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "correo",
+					"value": "marcelo.marin@gmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "domicilio",
+					"value": "en algun lugar del meta verso",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674814831474,
+			"name": "Crear Cliente Nuevo (online)",
+			"description": "se le debe pasar cuatros parametros o campos obligarotios, estos son:\nnombres, apellidos, correo y domicilio",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "c001af94-d96e-7e5f-ea01-de50257bed57",
+			"headers": "Authorization: \n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost/desafioIDESA/APIRestFul/public/api/clientes/123458",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1674803385995,
+			"name": "Borrar un Cliente",
+			"description": "borar un clinte determinado , parametro requerido es id de un Cliente",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"responses": []
+		},
+		{
+			"id": "fb2fbe30-3736-e582-3c04-f716c92218a5",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost/desafioIDESA/APIRestFul/public/api/login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+			"data": [
+				{
+					"key": "email",
+					"value": "desafio@idesa.com.py",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345678",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Solicitar Autorizacion",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1674800792145,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

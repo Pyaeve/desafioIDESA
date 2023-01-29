@@ -1,0 +1,8 @@
+options -MultiViews -Indexes
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+Rewriterule ^s1$ index.php?lote=$1 [L,QSA]
+Rewriterule ^s2$ index.php?lote=$1 [L,QSA]
+Rewriterule ^s3/lotes$ index.php?lote=0 [L,QSA]
+Rewriterule ^s3/lotes/(.*)$ index.php?lote=$1 [L,QSA]
