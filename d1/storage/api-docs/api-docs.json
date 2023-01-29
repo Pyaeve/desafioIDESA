@@ -1,0 +1,171 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API REST IDESA  ",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://desafio.idesa.pyaeveapps.com"
+        }
+    ],
+    "paths": {
+        "/api/user/auth": {
+            "post": {
+                "summary": "Autentifica los usuarios ",
+                "operationId": "0cfa3b01ffbf09b7c0fb963769631e17",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "email del usuario",
+                                "value": "email@example.com"
+                            }
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "password del usuario",
+                                "value": "123456"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Si autentica devuelve un JSON con el ACCESS TOKEN .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON con los DATOS del Usuario y su Access Tokebn valido por 72h",
+                                        "value": {
+                                            "status": "ok",
+                                            "message": "Auteticacion de Usuario validado con Exito",
+                                            "data": {
+                                                "total": 1,
+                                                "detail": {
+                                                    "id": 5,
+                                                    "nombres": "Martin Martinez",
+                                                    "correo": "martin.martinez@idesa.com.py",
+                                                    "access_token": "4|gBzzeriN5WIoqPoheZqKCcX8ZFeyETx6O8i9CirB",
+                                                    "type_token": "Bearer",
+                                                    "value_token": "Bearer 4|gBzzeriN5WIoqPoheZqKCcX8ZFeyETx6O8i9CirB",
+                                                    "expiration_token": "2800"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Devuelve un JSON con el error .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON com el mensaje de error",
+                                        "value": {
+                                            "status": "Unauthorized",
+                                            "message": "No tiene autorizacion para consumir la API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clientes": {
+            "get": {
+                "summary": "Lista los usuarios ",
+                "operationId": "29593cb6d735e27309ce747b0c9fbc61",
+                "parameters": [
+                    {
+                        "name": "Authentication",
+                        "in": "path",
+                        "description": "Authentication Bearer [token] esto va en la cabecera ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "email del usuario",
+                                "value": "Authentication Bearer [token]"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Si autentica devuelve un JSON con el ACCESS TOKEN .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON con la lista de Clientes",
+                                        "value": {
+                                            "status": "ok",
+                                            "message": "Auteticacion de Usuario validado con Exito",
+                                            "data": {
+                                                "total": 1,
+                                                "detail": {
+                                                    "id": 1,
+                                                    "nombres": "IDESA",
+                                                    "correo": "desafio@idesa.com.py",
+                                                    "access_token": "3|LdDMJM9HFVi8hqfkKmlP3q7rPUejd4n6Wx1aldWS",
+                                                    "type_token": "Bearer",
+                                                    "value_token": "Bearer 3|LdDMJM9HFVi8hqfkKmlP3q7rPUejd4n6Wx1aldWS",
+                                                    "expiration_token": "2800"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Devuelve un JSON con el error .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON com el mensaje de error",
+                                        "value": {
+                                            "status": "Unauthorized",
+                                            "message": "No tiene autorizacion para consumir la API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
