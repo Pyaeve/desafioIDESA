@@ -9,13 +9,42 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Validator;
 use App\Clientes;
 
+
+
 class ClientesController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * @OA\Get(
+    *     path="/api/clientes",
+    *     summary="Lista los usuarios ",
+    *     @OA\Parameter(
+    *         description="Authentication Bearer [token] esto va en la cabecera ",
+    *         in="path",
+    *         name="Authentication",
+    *         required=true,
+    *         @OA\Schema(type="string"),
+    *         @OA\Examples(example="string", value="Authentication Bearer [token]", summary="email del usuario"),
+    *       
+    *     ),
+    *     
+    *     @OA\Response(
+    *         response="200",
+    *         description="Si autentica devuelve un JSON con el ACCESS TOKEN .",
+    * @OA\JsonContent(
+    *         @OA\Examples(example="result",{"status":"ok","message":"Auteticacion de Usuario validado con Exito","data":{"total":1,"detail":{"id":1,"nombres":"IDESA","correo":"desafio@idesa.com.py","access_token":"3|LdDMJM9HFVi8hqfkKmlP3q7rPUejd4n6Wx1aldWS","type_token":"Bearer","value_token":"Bearer 3|LdDMJM9HFVi8hqfkKmlP3q7rPUejd4n6Wx1aldWS","expiration_token":"2800"}}}, summary="Devuelve un Objeto JSON con la lista de Clientes"),
+    *            
+    *         )
+    *     ),
+    * @OA\Response(
+    *         response="401",
+    *         description="Devuelve un JSON con el error .",
+    * @OA\JsonContent(
+    *         @OA\Examples(example="result", {"status":"Unauthorized","message":"No tiene autorizacion para consumir la API"}, summary="Devuelve un Objeto JSON com el mensaje de error"),
+    *            
+    *         )
+    *     )
+    * )
+    */
     public function index()
     {
         $clientes = Clientes::paginate(10);
