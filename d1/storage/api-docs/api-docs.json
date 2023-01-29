@@ -1,12 +1,12 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API REST IDESA  ",
+        "title": "API REST IDESA - API para Clientes",
         "version": "1.0"
     },
     "servers": [
         {
-            "url": "https://desafio.idesa.pyaeveapps.com"
+            "url": "https://desafio.idesa.pyaeveapps.com/v2/public"
         }
     ],
     "paths": {
@@ -125,7 +125,7 @@
                                 "schema": {},
                                 "examples": {
                                     "result": {
-                                        "summary": "Devuelve un Objeto JSON con la lista de Clientes",
+                                        "summary": "Devuelve un Objeto JSON con la lista de ",
                                         "value": {
                                             "status": "ok",
                                             "message": "Auteticacion de Usuario validado con Exito",
@@ -141,6 +141,366 @@
                                                     "expiration_token": "2800"
                                                 }
                                             }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Devuelve un JSON con el error .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON com el mensaje de error",
+                                        "value": {
+                                            "status": "Unauthorized",
+                                            "message": "No tiene autorizacion para consumir la API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Modifica/Actualiza datos del Cliente ",
+                "operationId": "471739115a8c5082af09e8094c034206",
+                "parameters": [
+                    {
+                        "name": "Authentication",
+                        "in": "path",
+                        "description": "Authentication Bearer [token] esto va en la cabecera ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "email del usuario",
+                                "value": "Authentication Bearer [token]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Authentication Bearer [token] esto va en la cabecera ",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Id del Cliente que se desea modificar",
+                                "value": "12345678"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Si autentica devuelve un JSON .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devukleve un mensaje de modificacion con exiro",
+                                        "value": {
+                                            "status": "ok",
+                                            "message": "Cliente modificado con Exito"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Devuelve un JSON con el error .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON com el mensaje de error",
+                                        "value": {
+                                            "status": "Unauthorized",
+                                            "message": "No tiene autorizacion para consumir la API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crea un Cliente ",
+                "operationId": "0f9aa4a97799ea24201a926ec7a0af3d",
+                "parameters": [
+                    {
+                        "name": "Authentication",
+                        "in": "path",
+                        "description": "Authentication Bearer [token] esto va en la cabecera ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "tokem",
+                                "value": "Authentication Bearer [token]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "nombres",
+                        "in": "path",
+                        "description": "Nombre del Cliente ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "Nombre del cliente",
+                                "value": "Juan"
+                            }
+                        }
+                    },
+                    {
+                        "name": "apellidos",
+                        "in": "path",
+                        "description": "Apellido del Cliente ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "Apelloido del cliente",
+                                "value": "Perez"
+                            }
+                        }
+                    },
+                    {
+                        "name": "correo",
+                        "in": "path",
+                        "description": "email del Cliente ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "email del cliente",
+                                "value": "Juan@gmail.com"
+                            }
+                        }
+                    },
+                    {
+                        "name": "domicilio",
+                        "in": "path",
+                        "description": "Nombre del Cliente ",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "domicilio del cliente",
+                                "value": "Juan ]"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Si autentica devuelve un JSON con el ACCESS TOKEN .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON con la lista de ",
+                                        "value": {
+                                            "status": "ok",
+                                            "message": "Cliente nuevo creado con Exito!!",
+                                            "data": {
+                                                "total": 1,
+                                                "detail": {
+                                                    "nombres": "Fabio",
+                                                    "apellidos": "Mendoza",
+                                                    "correo": "fabio.mendoza@gmail.com",
+                                                    "domicilio": "en algun lugar del meta verso",
+                                                    "updated_at": "2023-01-29T22:33:59.000000Z",
+                                                    "created_at": "2023-01-29T22:33:59.000000Z",
+                                                    "id": 123467
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Devuelve un JSON con el error .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON com el mensaje de error",
+                                        "value": {
+                                            "status": "Unauthorized",
+                                            "message": "No tiene autorizacion para consumir la API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clientes/:id": {
+            "get": {
+                "summary": "Visualiza Detalle de un Cliente ",
+                "operationId": "1d88b24d339dcd70a9886481e490fbe4",
+                "parameters": [
+                    {
+                        "name": "Authentication",
+                        "in": "path",
+                        "description": "Authentication Bearer [token] esto va en la cabecera ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "tokem",
+                                "value": "Authentication Bearer [token]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Nombre del Clientye ",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Nombre del cliente",
+                                "value": "123456"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Si autentica devuelve un JSON con los datos del cliente .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON con la lista de ",
+                                        "value": {
+                                            "status": "ok",
+                                            "message": "Detalle del Cliente ",
+                                            "data": {
+                                                "total": 1,
+                                                "detail": {
+                                                    "id": 123456,
+                                                    "nombres": "Felix",
+                                                    "apellidos": "Estigarribia",
+                                                    "correo": "felix.estigarribia@gmail,com",
+                                                    "domicilio": "En al gun lugar del Metaverso",
+                                                    "created_at": null,
+                                                    "updated_at": "2023-01-27T04:07:36.000000Z",
+                                                    "deleted_at": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Devuelve un JSON con el error .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON com el mensaje de error",
+                                        "value": {
+                                            "status": "Unauthorized",
+                                            "message": "No tiene autorizacion para consumir la API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Borra un Cliente ",
+                "operationId": "de2790c8a3673abca71abd1b9012c3b9",
+                "parameters": [
+                    {
+                        "name": "Authentication",
+                        "in": "path",
+                        "description": "Authentication Bearer [token] esto va en la cabecera ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "email del usuario",
+                                "value": "Authentication Bearer [token]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id del Cliente a borrar",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Id del Cliente a borrar",
+                                "value": "12345678"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Si autentica devuelve un JSON .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devukleve un mensaje de modificacion con exiro",
+                                        "value": {
+                                            "status": "ok",
+                                            "message": "Cliente borrado con Exito"
                                         }
                                     }
                                 }

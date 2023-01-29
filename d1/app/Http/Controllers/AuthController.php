@@ -7,11 +7,9 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Hash;
 use DB;
-/**
-* @OA\Info(title="API REST IDESA  ", version="1.0")
-*
-* @OA\Server(url="https://desafio.idesa.pyaeveapps.com")
-*/
+
+
+
 class AuthController extends Controller
 {
     
