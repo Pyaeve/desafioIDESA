@@ -1,1 +1,4 @@
 .vscode/launch.json
+./mysql-data/.*
+./logs/.*
+./public_html/phpmyadmin
