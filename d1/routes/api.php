@@ -33,10 +33,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('clientes.cuotas','ClientesCuotasController')
         ->only(['show'])
         ->parameters([
-         'clientes' => 'id'
+         'cliente' => 'id',
+        'cuota'=> 'lote'
         ])
         ->names([
-            'index' => 'api.clientes.cuotas.ver'
+            'show' => 'api.clientes.cuotas.ver'
         ]);
       
    

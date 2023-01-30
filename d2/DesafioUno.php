@@ -10,18 +10,14 @@ class DesafioUno {
         Database::setDB();
 
         $lotes =self::getLotes();
-       
-        $cobrar['status']            = false
-
-
-        ;
+        $cobrar=[];
+        $cobrar['status']            = false;
         $cobrar['message']           = 'No hay Lotes para cobrar';
         $cobrar['data']['total']     = 0;
         $cobrar['data']['detail']    = [];
 
-          foreach($lotes as $n){
-            
-          
+        foreach($lotes as $n){
+               
           if($n->precio!==190000) continue;
             if($n->clientID !== $clientID) continue;
                 if($n->lote && $n->lote!=='00148') continue;

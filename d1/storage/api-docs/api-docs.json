@@ -553,6 +553,112 @@
                     }
                 }
             }
+        },
+        "/api/clientes/:id/cuotas/:lote": {
+            "get": {
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Visualiza Detalle de las Cuptas de un Cliente",
+                "operationId": "f8eb942cdb4afe74b5bb8eaf327de9b1",
+                "parameters": [
+                    {
+                        "name": "Authentication",
+                        "in": "path",
+                        "description": "Authentication Bearer [token] esto va en la cabecera ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "string": {
+                                "summary": "tokem",
+                                "value": "Authentication Bearer [token]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID del Cliente ",
+                        "required": true,
+                        "schema": {
+                            "type": "int"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "ID del cliente",
+                                "value": "123456"
+                            }
+                        }
+                    },
+                    {
+                        "name": "lote",
+                        "in": "path",
+                        "description": "ID del LOTE del Cliente ",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "ID del LOTE del cliente",
+                                "value": "123456"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Si autentica devuelve un JSON con los datos del cliente .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON con la lista",
+                                        "value": {
+                                            "status": "ok",
+                                            "message": "detalle de la cuota del cliente!!",
+                                            "data": {
+                                                "total": 1,
+                                                "detail": {
+                                                    "id": 4,
+                                                    "clienteID": 123456,
+                                                    "lote": "00148",
+                                                    "nro": 4,
+                                                    "precio": "130000",
+                                                    "vencimiento": "2022-10-01",
+                                                    "status": 1,
+                                                    "created_at": null,
+                                                    "updated_at": null
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Devuelve un JSON con el error .",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Devuelve un Objeto JSON com el mensaje de error",
+                                        "value": {
+                                            "status": "Unauthorized",
+                                            "message": "No tiene autorizacion para consumir la API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "tags": [

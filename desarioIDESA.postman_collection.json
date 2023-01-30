@@ -1,0 +1,364 @@
+{
+	"variables": [],
+	"info": {
+		"name": "desarioIDESA",
+		"_postman_id": "236ed636-13b9-0bdf-42c5-89aa8fcf249c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Todos Los Cliente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"var resBody= JSON.parse(responseBody);",
+							"var resCode = responseCode;",
+							"/*TestType ",
+							"    1 testea si funciona bien las respuesta de Autenticaion valida,",
+							"    2 testa si funcion biena las respuesta de Autenticacion fallida */",
+							"var testType = 1; ",
+							"",
+							"if(testType==1)",
+							"{",
+							"    tests[\"Peticion aceptado por el servidor\"] = resCode.code === 200;",
+							"    tests[\"Respuesta: ok \"] = resBody.status === \"ok\";",
+							"   ",
+							"}else if(testType==2){",
+							"     tests[\"Peticion rechazada por el servidor\"] = resCode.code === 401;",
+							"    tests[\"Respuesta: unauthorized \"] = resBody.status === \"unauthorized\";",
+							"}",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost/desafioIDESA/d1/public/api/clientes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 4|9mITe3B5FTnNWSgqIETTgCKNALHuid2b0EvDA83k",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ver Detalle de un Cliente",
+			"request": {
+				"url": "http://localhost/desafioIDESA/d1/public/api/clientes/123463",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "se le pasa el parametro id"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cliente Nuevo",
+			"request": {
+				"url": "http://localhost/desafioIDESA/d1/public/api/clientes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombres",
+							"value": "Luis",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "apellidos",
+							"value": "Cardenas",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "luis.cardenas@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "domicilio",
+							"value": "en algun lugar del meta verso",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "se le debe pasar cuatros parametros o campos obligarotios, estos son:\nnombres, apellidos, correo y domicilio"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un Cliente",
+			"request": {
+				"url": "http://localhost/desafioIDESA/d1/public/api/clientes/123458",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"description": ""
+					},
+					{
+						"key": "",
+						"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "borar un clinte determinado , parametro requerido es id de un Cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Cliente",
+			"request": {
+				"url": {
+					"raw": "http://localhost/desafioIDESA/d1/public/api/clientes/123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"desafioIDESA",
+						"d1",
+						"public",
+						"api",
+						"clientes",
+						"123456"
+					],
+					"query": [
+						{
+							"key": "nombres",
+							"value": "Carlos",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "apellidos",
+							"value": "Gonzalez",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "correo",
+							"value": "carlos.gonzalez@gmail.com",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 14|sm1IunsvOuaLRaH2hz2Q0gbi1hMZtdGOEzfyUuD6",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombres",
+							"value": "Felix",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "apellidos",
+							"value": "Estigarribia",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "felix.estigarribia@gmail,com",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "\\"
+			},
+			"response": []
+		},
+		{
+			"name": "Solicitar Autorizacion",
+			"request": {
+				"url": "http://localhost/desafioIDESA/d1/public/api/user/auth",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "desafio@idesa.com.py",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Todos los Clientes(online)",
+			"request": {
+				"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/clientes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 1|0owuOKJL27uHipRbo97tdsFcwdhRmcxXfyFO9E3B",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Solicitar Autorizacion(OnLine)",
+			"request": {
+				"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "martin.martinez@idesa.com.py",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Ver Detalle Cliente(online)",
+			"request": {
+				"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/clientes/123456",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 3|LdDMJM9HFVi8hqfkKmlP3q7rPUejd4n6Wx1aldWS",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cliente Nuevo (online)",
+			"request": {
+				"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/clientes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 6|W4xiGC5g8rVpAqLjXoCxkBFawbj8TPeM99hVUWdP",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombres",
+							"value": "Fabio",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "apellidos",
+							"value": "Mendoza",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "correo",
+							"value": "fabio.mendoza@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "domicilio",
+							"value": "en algun lugar del meta verso",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "se le debe pasar cuatros parametros o campos obligarotios, estos son:\nnombres, apellidos, correo y domicilio"
+			},
+			"response": []
+		}
+	]
+}
