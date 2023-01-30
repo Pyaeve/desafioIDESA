@@ -306,7 +306,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer 3|LdDMJM9HFVi8hqfkKmlP3q7rPUejd4n6Wx1aldWS",
+						"value": "Bearer 6|W4xiGC5g8rVpAqLjXoCxkBFawbj8TPeM99hVUWdP",
 						"description": ""
 					}
 				],
@@ -318,7 +318,7 @@
 		{
 			"name": "Crear Cliente Nuevo (online)",
 			"request": {
-				"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/clientes",
+				"url": "https://desafio.idesa.pyaeveapps.com/v2/public/api/clientes/123456/cuotas/1233",
 				"method": "POST",
 				"header": [
 					{
@@ -357,6 +357,23 @@
 					]
 				},
 				"description": "se le debe pasar cuatros parametros o campos obligarotios, estos son:\nnombres, apellidos, correo y domicilio"
+			},
+			"response": []
+		},
+		{
+			"name": "Ver Detalle de Cuotas de un Lote",
+			"request": {
+				"url": "http://localhost/desafioIDESA/d1/public/api/clientes/123456/cuotas/00148",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 4|9mITe3B5FTnNWSgqIETTgCKNALHuid2b0EvDA83k",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
 			},
 			"response": []
 		}
