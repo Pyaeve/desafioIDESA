@@ -1,8 +1,16 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API REST IDESA - API para Clientes",
-        "version": "1.0"
+        "title": "API REST (LARAVEL 7) IDESA ",
+        "description": "API REST construido con Laravel 7 y Documentado con Swagger",
+        "contact": {
+            "email": "rifarca@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
     },
     "servers": [
         {
@@ -12,6 +20,9 @@
     "paths": {
         "/api/user/auth": {
             "post": {
+                "tags": [
+                    "Usuarios"
+                ],
                 "summary": "Autentifica los usuarios ",
                 "operationId": "0cfa3b01ffbf09b7c0fb963769631e17",
                 "parameters": [
@@ -93,12 +104,16 @@
                             }
                         }
                     }
-                }
+                },
+                "security": []
             }
         },
         "/api/clientes": {
             "get": {
-                "summary": "Lista los usuarios ",
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Lista los usuarios",
                 "operationId": "29593cb6d735e27309ce747b0c9fbc61",
                 "parameters": [
                     {
@@ -167,6 +182,9 @@
                 }
             },
             "put": {
+                "tags": [
+                    "Clientes"
+                ],
                 "summary": "Modifica/Actualiza datos del Cliente ",
                 "operationId": "471739115a8c5082af09e8094c034206",
                 "parameters": [
@@ -239,6 +257,9 @@
                 }
             },
             "post": {
+                "tags": [
+                    "Clientes"
+                ],
                 "summary": "Crea un Cliente ",
                 "operationId": "0f9aa4a97799ea24201a926ec7a0af3d",
                 "parameters": [
@@ -370,6 +391,9 @@
         },
         "/api/clientes/:id": {
             "get": {
+                "tags": [
+                    "Clientes"
+                ],
                 "summary": "Visualiza Detalle de un Cliente ",
                 "operationId": "1d88b24d339dcd70a9886481e490fbe4",
                 "parameters": [
@@ -455,6 +479,9 @@
                 }
             },
             "delete": {
+                "tags": [
+                    "Clientes"
+                ],
                 "summary": "Borra un Cliente ",
                 "operationId": "de2790c8a3673abca71abd1b9012c3b9",
                 "parameters": [
@@ -527,5 +554,31 @@
                 }
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "Usuarios",
+            "description": "API para manejar Usuarios y su Autenticacion"
+        },
+        {
+            "name": "Clientes",
+            "description": "API para manejar Clientes"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "AuthBearer": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "scheme": "https",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "AuthBearer": []
+        }
+    ]
 }

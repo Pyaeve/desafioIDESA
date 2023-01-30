@@ -9,17 +9,14 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Validator;
 use App\Clientes;
 
-/**
-* @OA\Info(title="API REST IDESA - API para Clientes", version="1.0")
-*
-* @OA\Server(url="https://desafio.idesa.pyaeveapps.com/v2/public")
-*/
+    
 class ClientesController extends Controller
 {
     /**
     * @OA\Get(
     *     path="/api/clientes",
-    *     summary="Lista los usuarios ",
+    *     summary="Lista los usuarios",
+    *     tags={"Clientes"},
     *     @OA\Parameter(
     *         description="Authentication Bearer [token] esto va en la cabecera ",
     *         in="path",
@@ -47,7 +44,11 @@ class ClientesController extends Controller
     *         )
     *     )
     * )
+    * 
+    * 
     */
+
+    
     public function index()
     {
         $clientes = Clientes::paginate(10);
@@ -66,6 +67,7 @@ class ClientesController extends Controller
     * @OA\Post(
     *     path="/api/clientes",
     *     summary="Crea un Cliente ",
+    *      tags={"Clientes"},
     *     @OA\Parameter(
     *         description="Authentication Bearer [token] esto va en la cabecera ",
     *         in="path",
@@ -194,6 +196,7 @@ class ClientesController extends Controller
     * @OA\Get(
     *     path="/api/clientes/:id",
     *     summary="Visualiza Detalle de un Cliente ",
+    *  tags={"Clientes"},
     *     @OA\Parameter(
     *         description="Authentication Bearer [token] esto va en la cabecera ",
     *         in="path",
@@ -260,6 +263,7 @@ class ClientesController extends Controller
     * @OA\Put(
     *     path="/api/clientes",
     *     summary="Modifica/Actualiza datos del Cliente ",
+    *  tags={"Clientes"},
     *     @OA\Parameter(
     *         description="Authentication Bearer [token] esto va en la cabecera ",
     *         in="path",
@@ -348,6 +352,7 @@ class ClientesController extends Controller
     * @OA\Delete(
     *     path="/api/clientes/:id",
     *     summary="Borra un Cliente ",
+    *  tags={"Clientes"},
     *     @OA\Parameter(
     *         description="Authentication Bearer [token] esto va en la cabecera ",
     *         in="path",

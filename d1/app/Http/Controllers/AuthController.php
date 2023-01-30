@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Hash;
 use DB;
 
-
+/* 
+    * @OA\Tag(
+     *     name="Usuarios",
+     *     description="API para Autenticar Usuarios"
+     * )
+ * */
 
 class AuthController extends Controller
 {
@@ -17,6 +22,8 @@ class AuthController extends Controller
     * @OA\Post(
     *     path="/api/user/auth",
     *     summary="Autentifica los usuarios ",
+    *     tags={"Usuarios"},
+    *     security={},
     *     @OA\Parameter(
     *         description="email",
     *         in="path",

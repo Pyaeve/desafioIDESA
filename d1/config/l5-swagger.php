@@ -1,11 +1,12 @@
 <?php
 
 return [
-    'default' => 'Principal',
+    'default' => 'Clientes',
     'documentations' => [
-        'Principal' => [
+        'Clientes' => [
+            
             'api' => [
-                'title' => 'Desafio IDESA - API rest Documentacion ',
+                'title' => 'Desafio IDESA - API V1.0 Documentacion ',
             ],
 
             'routes' => [
@@ -13,6 +14,7 @@ return [
                  * Route for accessing api documentation interface
                 */
                 'api' => 'api/doc',
+                'tag' => 'sad' 
             ],
             'paths' => [
                 /*
@@ -190,14 +192,15 @@ return [
                             "scopes" => []
                         ],
                     ],
-                ],
-                'sanctum' => [ // Unique name of security
+                ],*/
+                'AuthBearer' => [ // Unique name of security
                     'type' => 'apiKey', // Valid values are "basic", "apiKey" or "oauth2".
                     'description' => 'Enter token in format (Bearer <token>)',
+                    'scheme' => 'https',
                     'name' => 'Authorization', // The name of the header or query parameter to be used.
                     'in' => 'header', // The location of the API key. Valid values are "query" or "header".
                 ],
-                */
+                
             ],
             'security' => [
                 /*
@@ -212,6 +215,7 @@ return [
 
                     'passport' => []
                     */
+                                     'AuthBearer' =>[] 
                 ],
             ],
         ],
